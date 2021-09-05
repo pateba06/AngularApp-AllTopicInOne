@@ -9,8 +9,9 @@ export class UserComponent {
     // declaring variable for dataBinding example
     empId =10;
     employementStatus = 'Employed'
+    employementMessage:string;
 
     getEmployeeInterpolation(){
-        this.employementStatus = "I am Employeed. Updating message through method inside interpolation"
+       return this.employementMessage = " Updating message through method inside interpolation"
     }
 }

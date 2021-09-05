@@ -26,9 +26,14 @@ In this app it will cover most topic in one app. I am creating branch for each t
 
 02-DataBinding branch
 
+    In Interpolation we can only use String, but in Property binding we can use boolean as well.
+    disable attribute won't work with string or string interpolation - it does not read true or false, so in that case we have to use Propertybinding
+
     Interpolation
 
         it should always return string. or any data which can be converted into string.
+        Can be used for string concenation
+        We can use javaScript property also<
         
         Example 1
         html
@@ -42,6 +47,8 @@ In this app it will cover most topic in one app. I am creating branch for each t
         TS
         emp:string;
         empInterpolation(){
-            this.emp = "Badal"
+           return this.emp = "Badal"
         }
+
+    PropertyBinding
 
