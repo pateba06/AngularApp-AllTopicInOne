@@ -1,6 +1,9 @@
 <h1 style="color: blue;">Users Component</h1>
 
-<!-- we will use property binding to disable this button -->
-<button class="btn btn-primary" [disabled]="!allowNewUser">Add User</button>
-
+<!-- 
+  [disable] - It is an example of Property Binding
+  [click] - Event binding -->
+<button class="btn btn-primary" [disabled]="!allowUser" (click)="changeUserStatus()">Add User</button>
+<!-- Event Binding Example  -->
+<div>{{userStatus}}</div>
 <app-user></app-user>
