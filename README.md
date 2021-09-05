@@ -23,3 +23,25 @@ In this app it will cover most topic in one app. I am creating branch for each t
 
     code for creating new component. Below code will generate user component
 <code>ng generate component users</code>.
+
+02-DataBinding branch
+
+    Interpolation
+
+        it should always return string. or any data which can be converted into string.
+        
+        Example 1
+        html
+        <h1> {{emp}} </h1>
+        TS
+        emp="Badal"
+
+        Example 2 - We can also use method inside Interpolation
+        html
+        <h1> {{empInterpolation()}} </h1>
+        TS
+        emp:string;
+        empInterpolation(){
+            this.emp = "Badal"
+        }
+
