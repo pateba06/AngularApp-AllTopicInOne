@@ -4,19 +4,21 @@
   <div class="my-2 col-md-6">
     <!-- Sending data using $event reserved word -->
     <label>User Name EventBinding Example: {{userName}}</label>
-    <input type="text" class="form-control" (input)="onUpdateUser($event)"/>
+    <input type="text" class="form-control" (input)="onUpdateUser($event)" />
     <label>User Name TwoWayDataBinding Example: {{userNameTwoWayDataBinding}}</label>
-    <input type="text" class="form-control" [(ngModel)]="userNameTwoWayDataBinding"/>
+    <input type="text" class="form-control" [(ngModel)]="userNameTwoWayDataBinding" />
   </div>
 
   <!-- 
   [disable] - It is an example of Property Binding
   [click] - Event binding -->
   <button class="btn btn-primary" [disabled]="!allowUser" (click)="changeUserStatus()">Add User</button>
-    <!-- *ngIf Example --it will only come if user clicks on add user  -->
-    <div *ngIf="isUserCreated">{{userStatus}}</div>
-      <!-- Event Binding Example ++ *ngIF else condition also -->
+  <!-- *ngIf Example --it will only come if user clicks on add user  -->
+  <div *ngIf="isUserCreated;else noUser">{{userStatus}}</div>
+  <!-- ngTemplateExample -->
+  <ng-template #noUser>
     <div *ngIf="!isUserCreated">{{userStatus}}</div>
+  </ng-template>
 </div>
 
 <app-user></app-user>

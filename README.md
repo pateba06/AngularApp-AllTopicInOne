@@ -155,12 +155,34 @@ In this app it will cover most topic in one app. I am creating branch for each t
           }
 
     *ngIf with else condition
+        Note:This is not good practice, it is better to use ng-template. Please look ng-template in next example
+
+        Example: *ngIf Else example
         HTML
           <button (click)="changeUserStatus()">Add User</button>
           <!-- *ngIf Example - this div would only show when isUserCreated will become true -->
           <div *ngIf="isUserCreated"> New User Added</div>
           <div *ngIf="!isUserCreated"> No User been created</div>
         TS
+          isUserCreated = false;
+          changeUserStatus(){
+              this.isUserCreated = true;
+          }
+
+
+    ng-template instead using *ngIf condition
+
+    Note - ng-template is the best practice to use instead of above *ngIf else condition
+
+    Example: ng-template example
+
+        Html
+        <div *ngIf="isUserCreated;else noUser">{{userStatus}}</div>
+        <ng-template #noUser>
+            <div *ngIf="!isUserCreated">{{userStatus}}</div>
+        </ng-template>
+
+          TS
           isUserCreated = false;
           changeUserStatus(){
               this.isUserCreated = true;
