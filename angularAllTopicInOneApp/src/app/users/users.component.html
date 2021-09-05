@@ -15,6 +15,8 @@
   <button class="btn btn-primary" [disabled]="!allowUser" (click)="changeUserStatus()">Add User</button>
   <!-- Event Binding Example  -->
   <div>{{userStatus}}</div>
+    <!-- *ngIf Example --it will only come if user clicks on add user  -->
+    <div *ngIf="isUserCreated">{{userStatus}}</div>
 </div>
 
 <app-user></app-user>

@@ -135,3 +135,21 @@ In this app it will cover most topic in one app. I am creating branch for each t
                     <li>ngClass</li>
                 </ul>
                 </ol>
+
+
+
+    *ngIf Directives
+        it is used when we want to show the output conditionally in the template
+
+        Example
+
+        HTML
+          <button (click)="changeUserStatus()">Add User</button>
+          <!-- *ngIf Example - this div would only show when isUserCreated will become true -->
+          <div *ngIf="isUserCreated"> New User Added</div>
+        
+        TS
+          isUserCreated = false;
+          changeUserStatus(){
+              this.isUserCreated = true;
+          }
