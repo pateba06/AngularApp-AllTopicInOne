@@ -14,6 +14,8 @@ export class UsersComponent implements OnInit {
   userName = '';
   // userNameTwoWayDataBinding we created for twoWayBinding
   userNameTwoWayDataBinding ='';
+  // isUserCreated we created for *ngIf 
+  isUserCreated = false;
 
   constructor() { 
     // Using setTimeOut to enable the button. The button which we have used for property binding
@@ -28,6 +30,8 @@ export class UsersComponent implements OnInit {
   // below method we created for eventBinding example. this method will assign value to userStatus
   changeUserStatus(){
     this.userStatus = "New User successfully Created"
+    // this will triger *ngIf
+    this.isUserCreated = true;
   }
 
   //this method we created to show event binding using $event reserve word 

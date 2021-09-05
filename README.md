@@ -114,3 +114,42 @@ In this app it will cover most topic in one app. I am creating branch for each t
         TS
         <!-- I can keep some value from the beginning, and later any message in this input will change value in label-->
         userNameTwoWayDataBinding ="Hello I am using Two Way binding"
+
+
+03-AngularDirective - branch
+        <h1> There are three types of directives</h1>
+                <ol>
+                <li>Component Directives</li>
+                <p>Directives with own component</p>
+                <li>Structural Directives</li>
+                <p>Manipulating the Dom Elements</p>
+                <ul>
+                    <li>ngIf</li>
+                    <li>ngFor</li>
+                    <li>ngSwitch</li>
+                </ul>
+                <li>Attribugte Directives</li>
+                <p>Changes the look and behavior of the dom</p>
+                <ul>
+                    <li>ngStyle</li>
+                    <li>ngClass</li>
+                </ul>
+                </ol>
+
+
+
+    *ngIf Directives
+        it is used when we want to show the output conditionally in the template
+
+        Example
+
+        HTML
+          <button (click)="changeUserStatus()">Add User</button>
+          <!-- *ngIf Example - this div would only show when isUserCreated will become true -->
+          <div *ngIf="isUserCreated"> New User Added</div>
+        
+        TS
+          isUserCreated = false;
+          changeUserStatus(){
+              this.isUserCreated = true;
+          }
