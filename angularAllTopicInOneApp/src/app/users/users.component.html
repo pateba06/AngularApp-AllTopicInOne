@@ -1,5 +1,12 @@
 <div class="users-container">
   <h1 style="color: blue;">Users Component</h1>
+
+  <div class="my-2 col-md-3">
+    <!-- Sending data using $event reserved word -->
+    <label>User Name: {{userName}}</label>
+    <input type="text" class="form-control" (input)="onUpdateUser($event)"/>
+  </div>
+
   <!-- 
   [disable] - It is an example of Property Binding
   [click] - Event binding -->

@@ -79,3 +79,17 @@ In this app it will cover most topic in one app. I am creating branch for each t
             clickMethod(){
                 this.userStatus = "New User successfully Created"
             }
+
+
+    Eventbinding using $event reserved word
+        example
+        html
+        <label>User Name: {{userName}}</label>
+         <input type="text" class="form-control" (input)="onUpdateUser($event)"/>
+        TS
+          // userName we created to show $event example
+         userName = '';
+           //this method we created to show event binding using $event reserve word 
+            onUpdateUser(event:any){
+                this.userName = event.target.value
+            }
