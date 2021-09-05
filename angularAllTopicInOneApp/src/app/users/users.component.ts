@@ -8,17 +8,21 @@ import { Component, OnInit } from '@angular/core';
 export class UsersComponent implements OnInit {
 
   // Initial value false for disabling button.
-  allowNewUser =false;
+  allowUser =false;
+  userStatus = "User does not exist"
 
   constructor() { 
-
     // Using setTimeOut to enable the button. The button which we have used for property binding
     setTimeout(() =>{
-      this.allowNewUser =true;
+      this.allowUser =true;
     },5000)
   }
 
   ngOnInit() {
+  }
+
+  changeUserStatus(){
+    this.userStatus = "New User successfully Created"
   }
 
   

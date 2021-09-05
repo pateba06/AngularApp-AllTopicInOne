@@ -52,3 +52,30 @@ In this app it will cover most topic in one app. I am creating branch for each t
 
     PropertyBinding
 
+        Example 1 - disable button using boolean value. Enabling after 5 seconds once the variable becomes True
+
+        html
+            <button class="btn btn-primary" [disabled]="!allowNewUser">Add User</button>
+        TS
+            // Initial value false for disabling button.
+            allowNewUser =false;
+
+            constructor() { 
+            // Using setTimeOut to enable the button. The button which we have used for property binding
+            setTimeout(() =>{
+            this.allowNewUser =true;
+            },5000)
+        }
+
+
+
+    EventBinding
+         html
+            <button (click)="clickMethod()">Add User</button>
+            <!-- Event Binding Example  -->
+            <div>{{userStatus}}</div>  
+        TS
+            userStatus = "User does not exist"
+            clickMethod(){
+                this.userStatus = "New User successfully Created"
+            }
