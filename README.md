@@ -9,7 +9,7 @@ In this app it will cover most topic in one app. I am creating branch for each t
 
     Then added below in angular.json
 
-    <code>         
+<code>         
         "styles": 
     [
         "src/styles.css",
@@ -22,4 +22,4 @@ In this app it will cover most topic in one app. I am creating branch for each t
     ]</code>.
 
     code for creating new component. Below code will generate user component
-     <code>ng generate component users</code>.
+<code>ng generate component users</code>.
