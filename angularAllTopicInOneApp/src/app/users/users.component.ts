@@ -10,6 +10,8 @@ export class UsersComponent implements OnInit {
   // Initial value false for disabling button.
   allowUser =false;
   userStatus = "User does not exist"
+  // userName we created to show $event example
+  userName = '';
 
   constructor() { 
     // Using setTimeOut to enable the button. The button which we have used for property binding
@@ -21,9 +23,13 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
   }
 
+  // below method we created for eventBinding example. this method will assign value to userStatus
   changeUserStatus(){
     this.userStatus = "New User successfully Created"
   }
 
-  
+  //this method we created to show event binding using $event reserve word 
+  onUpdateUser(event:any){
+    this.userName = event.target.value
+  }
 }
