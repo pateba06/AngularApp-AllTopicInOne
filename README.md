@@ -114,3 +114,24 @@ In this app it will cover most topic in one app. I am creating branch for each t
         TS
         <!-- I can keep some value from the beginning, and later any message in this input will change value in label-->
         userNameTwoWayDataBinding ="Hello I am using Two Way binding"
+
+
+03-AngularDirective - branch
+        <h1> There are three types of directives</h1>
+                <ol>
+                <li>Component Directives</li>
+                <p>Directives with own component</p>
+                <li>Structural Directives</li>
+                <p>Manipulating the Dom Elements</p>
+                <ul>
+                    <li>ngIf</li>
+                    <li>ngFor</li>
+                    <li>ngSwitch</li>
+                </ul>
+                <li>Attribugte Directives</li>
+                <p>Changes the look and behavior of the dom</p>
+                <ul>
+                    <li>ngStyle</li>
+                    <li>ngClass</li>
+                </ul>
+                </ol>
