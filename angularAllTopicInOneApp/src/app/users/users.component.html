@@ -1,10 +1,12 @@
 <div class="users-container">
   <h1 style="color: blue;">Users Component</h1>
 
-  <div class="my-2 col-md-3">
+  <div class="my-2 col-md-6">
     <!-- Sending data using $event reserved word -->
-    <label>User Name: {{userName}}</label>
+    <label>User Name EventBinding Example: {{userName}}</label>
     <input type="text" class="form-control" (input)="onUpdateUser($event)"/>
+    <label>User Name TwoWayDataBinding Example: {{userNameTwoWayDataBinding}}</label>
+    <input type="text" class="form-control" [(ngModel)]="userNameTwoWayDataBinding"/>
   </div>
 
   <!-- 

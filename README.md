@@ -70,10 +70,13 @@ In this app it will cover most topic in one app. I am creating branch for each t
 
 
     EventBinding
+       example
+
          html
             <button (click)="clickMethod()">Add User</button>
             <!-- Event Binding Example  -->
             <div>{{userStatus}}</div>  
+
         TS
             userStatus = "User does not exist"
             clickMethod(){
@@ -82,10 +85,13 @@ In this app it will cover most topic in one app. I am creating branch for each t
 
 
     Eventbinding using $event reserved word
+
         example
+
         html
         <label>User Name: {{userName}}</label>
          <input type="text" class="form-control" (input)="onUpdateUser($event)"/>
+
         TS
           // userName we created to show $event example
          userName = '';
@@ -93,3 +99,18 @@ In this app it will cover most topic in one app. I am creating branch for each t
             onUpdateUser(event:any){
                 this.userName = event.target.value
             }
+
+
+        TwoWay - DataBinding
+        We can achieve same thing $event, but let see proper way below.
+        [()]  - it combination of event and propertybinding
+
+        Example
+        ** Make sure FormsModule is imported in app.module.ts to work
+        Html
+            <label>User Name TwoWayDataBinding Example: {{userNameTwoWayDataBinding}}</label>
+            <input type="text" class="form-control" [(ngModel)]="userNameTwoWayDataBinding"/>
+
+        TS
+        <!-- I can keep some value from the beginning, and later any message in this input will change value in label-->
+        userNameTwoWayDataBinding ="Hello I am using Two Way binding"
