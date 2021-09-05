@@ -12,6 +12,8 @@ export class UsersComponent implements OnInit {
   userStatus = "User does not exist"
   // userName we created to show $event example
   userName = '';
+  // userNameTwoWayDataBinding we created for twoWayBinding
+  userNameTwoWayDataBinding ='';
 
   constructor() { 
     // Using setTimeOut to enable the button. The button which we have used for property binding
@@ -32,4 +34,9 @@ export class UsersComponent implements OnInit {
   onUpdateUser(event:any){
     this.userName = event.target.value
   }
+
+    // //this method we created to show event binding using $event reserve word 
+    // onUpdateUserTwoWay(event:any){
+    //   this.userName = event.target.value
+    // }
 }
