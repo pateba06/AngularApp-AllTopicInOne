@@ -4,7 +4,7 @@ In this app it will cover most topic in one app. I am creating branch for each t
 01-AngularBasicSetup branch
 
     For Bootstrap installation 
-    <code>npm install bootstrap jquery popper.js --save</code>.
+<code>npm install bootstrap jquery popper.js --save</code>.
 
 
     Then added below in angular.json
