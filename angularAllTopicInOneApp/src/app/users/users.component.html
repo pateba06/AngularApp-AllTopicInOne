@@ -1,9 +1,11 @@
-<h1 style="color: blue;">Users Component</h1>
-
-<!-- 
+<div class="users-container">
+  <h1 style="color: blue;">Users Component</h1>
+  <!-- 
   [disable] - It is an example of Property Binding
   [click] - Event binding -->
-<button class="btn btn-primary" [disabled]="!allowUser" (click)="changeUserStatus()">Add User</button>
-<!-- Event Binding Example  -->
-<div>{{userStatus}}</div>
+  <button class="btn btn-primary" [disabled]="!allowUser" (click)="changeUserStatus()">Add User</button>
+  <!-- Event Binding Example  -->
+  <div>{{userStatus}}</div>
+</div>
+
 <app-user></app-user>
