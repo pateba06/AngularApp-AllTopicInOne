@@ -35,8 +35,4 @@ export class UsersComponent implements OnInit {
     this.userName = event.target.value
   }
 
-    // //this method we created to show event binding using $event reserve word 
-    // onUpdateUserTwoWay(event:any){
-    //   this.userName = event.target.value
-    // }
 }
