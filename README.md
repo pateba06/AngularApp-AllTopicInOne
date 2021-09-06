@@ -378,3 +378,22 @@ In this app it will cover most topic in one app. I am creating branch for each t
          OnUserAdded(data) {
              this.userNmae = data.value
         }
+
+06-viewChildAndElementRef
+
+    Access Html Elements in the DOM & Template with @ViewChild and the type ElementRef in angular
+
+        HTML
+          <input type="text" class="form-control" #userInputViewChild>
+         <button class ="btn btn-primary" (click)="onUserAddedViewChild()">Add User using View Child</button>
+        TS
+            <!-- this is for child to parent comumnication -->
+             @Output() userAdded = new EventEmitter<string>();
+
+            <!-- usingView child by referencing template Reference variable and accessing the value using Element Ref -->
+            @ViewChild('userInputViewChild') userInputViewChild:ElementRef
+              // below function to show example of viewchild
+            onUserAddedViewChild(){
+                // accessing the #userInputViewChild template ref variable and using viewChild  and accessing the value
+                this.userAdded.emit(this.userInputViewChild.nativeElement.value)
+                }
