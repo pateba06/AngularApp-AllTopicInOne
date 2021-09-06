@@ -6,12 +6,5 @@ import { Component } from "@angular/core";
     styleUrls:['./user.component.css']
 })
 export class UserComponent {
-    // declaring variable for dataBinding example
-    empId =10;
-    employementStatus = 'Employed'
-    employementMessage:string;
 
-    getEmployeeInterpolation(){
-       return this.employementMessage = " Updating message through method inside interpolation"
-    }
 }

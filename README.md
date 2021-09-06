@@ -1,7 +1,7 @@
 # AngularApp-AllTopicInOne
 In this app it will cover most topic in one app. I am creating branch for each topic then on periodical increment I will merge that into Main branch. 
 
-01-AngularBasicSetup branch
+01-AngularBasicSetup branch  --merged in main branch
 
     For Bootstrap installation 
 <code>npm install bootstrap jquery popper.js --save</code>.
@@ -24,7 +24,7 @@ In this app it will cover most topic in one app. I am creating branch for each t
     code for creating new component. Below code will generate user component
 <code>ng generate component users</code>.
 
-02-DataBinding branch
+02-DataBinding branch --merged in main branch
 
     In Interpolation we can only use String, but in Property binding we can use boolean as well.
     disable attribute won't work with string or string interpolation - it does not read true or false, so in that case we have to use Propertybinding
@@ -116,7 +116,7 @@ In this app it will cover most topic in one app. I am creating branch for each t
         userNameTwoWayDataBinding ="Hello I am using Two Way binding"
 
 
-03-AngularDirective - branch
+03-AngularDirective - branch --merged in main branch
         <h1> There are three types of directives</h1>
                 <ol>
                 <li>Component Directives</li>
@@ -298,3 +298,6 @@ In this app it will cover most topic in one app. I am creating branch for each t
                 price: '140000',
                 },
             ];
+
+
+04-Interaction Between Components - branch  --merged in develop branch
