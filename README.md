@@ -235,3 +235,66 @@ In this app it will cover most topic in one app. I am creating branch for each t
                     class2: true,
                     class3: true
                 }
+
+
+*ngFor - Structrual Directives
+
+    *ngFor - It is angular directive which work's like for loop.
+    *ngFor ="let array of arrays"   ---basic sytax---it will loop over object.
+
+          <!-- *ngFor Example -->
+          HTML
+
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Sr No</th>
+                    <th>Product Image</th>
+                    <th>Product Name</th>
+                    <th>Product Id</th>
+                    <th>Product Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let pro of product;index as i">
+                    <td>{{i+1}}</td>
+                    <td><img src="{{pro.proimg}}" style="width: 100px;height: 50px;"></td>
+                    <td>{{pro.name}}</td>
+                    <td>{{pro.id}}</td>
+                    <td>{{pro.price}}</td>
+                </tr>
+                </tbody>
+            </table>
+        TS
+
+          // *ngFor Example - we have array of object
+            product = [
+                {
+                proimg:
+                    'https://tse2.mm.bing.net/th?id=OIP.lYVzyTHvj2cME5ekzl8bYAHaFj&pid=Api&P=0&w=217&h=164',
+                name: 'Laptop',
+                id: 'pro001',
+                price: '150000',
+                },
+                {
+                proimg:
+                    'https://tse3.mm.bing.net/th?id=OIP.F2OBmKwEv7h2uU29TY776wHaEK&pid=Api&P=0&w=306&h=173',
+                name: 'Mobile',
+                id: 'pro002',
+                price: '160000',
+                },
+                {
+                proimg:
+                    'https://tse1.mm.bing.net/th?id=OIP.l5t9FwPxH7KFdHzVwdTUYAHaFL&pid=Api&rs=1&c=1&qlt=95&w=146&h=102',
+                name: 'Computer',
+                id: 'pro004',
+                price: '190000',
+                },
+                {
+                proimg:
+                    'https://tse4.mm.bing.net/th?id=OIP.5Ne6c_C0QnDP-APepToqCgHaIp&pid=Api&P=0&w=300&h=300',
+                name: 'Washing Machine',
+                id: 'pro005',
+                price: '140000',
+                },
+            ];
