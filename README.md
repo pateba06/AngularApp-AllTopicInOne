@@ -361,3 +361,4 @@ In this app it will cover most topic in one app. I am creating branch for each t
                     // emiting event to send data to Parent component -- sending userName Data to parent component so it can be push in userList
                     this.userAdded.emit(this.userName);
                 }
+
