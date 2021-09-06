@@ -29,6 +29,28 @@
   <div class="box" [ngClass]="mtlclasses">
     <p>[ngclass] directive</p>
   </div>
+
+  <!-- *ngFor Example -->
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Sr No</th>
+        <th>Product Image</th>
+        <th>Product Name</th>
+        <th>Product Id</th>
+        <th>Product Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pro of product;index as i">
+        <td>{{i+1}}</td>
+        <td><img src="{{pro.proimg}}" style="width: 100px;height: 50px;"></td>
+        <td>{{pro.name}}</td>
+        <td>{{pro.id}}</td>
+        <td>{{pro.price}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <app-user></app-user>
