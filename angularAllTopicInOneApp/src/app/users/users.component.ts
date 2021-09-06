@@ -39,4 +39,13 @@ export class UsersComponent implements OnInit {
     this.userName = event.target.value
   }
 
+  // ngStyle -example -adding color from here
+  getColor(){
+    if(this.isUserCreated === true){
+      return 'green';
+    }
+    if(this.isUserCreated === false){
+      return 'red';
+    }
+  }
 }

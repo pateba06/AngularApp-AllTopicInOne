@@ -138,7 +138,8 @@ In this app it will cover most topic in one app. I am creating branch for each t
 
 
 
-    *ngIf Directives
+*ngIf - Structural Directives
+
         it is used when we want to show the output conditionally in the template
 
         Example: *ngIf example
@@ -187,3 +188,27 @@ In this app it will cover most topic in one app. I am creating branch for each t
           changeUserStatus(){
               this.isUserCreated = true;
           }
+
+
+*ngStyle - Attribugte Directives
+
+    We use ngStyle , when we want to apply particular style to  particular Element. We can apply dynamical style based on requirement.
+    
+
+    Example
+
+        Html
+             <div *ngIf="isUserCreated;else noUser" [ngStyle] = "{'background-color':getColor()}">{{userStatus}}</div>
+             <ng-template #noUser>
+                <div *ngIf="!isUserCreated"  [ngStyle] = "{'background-color':getColor()}">{{userStatus}}</div>
+            </ng-template>
+
+        TS
+          // ngStyle -example -adding color from here
+            getColor(){
+                if(this.isUserCreated === true){
+                return 'green';
+                }
+                if(this.isUserCreated === false){
+                return 'red';
+                }

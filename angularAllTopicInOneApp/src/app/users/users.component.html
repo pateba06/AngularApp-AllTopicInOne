@@ -14,10 +14,10 @@
   [click] - Event binding -->
   <button class="btn btn-primary" [disabled]="!allowUser" (click)="changeUserStatus()">Add User</button>
   <!-- *ngIf Example --it will only come if user clicks on add user  -->
-  <div *ngIf="isUserCreated;else noUser">{{userStatus}}</div>
+  <div *ngIf="isUserCreated;else noUser" [ngStyle] = "{'background-color':getColor()}">{{userStatus}}</div>
   <!-- ngTemplateExample -->
-  <ng-template #noUser>
-    <div *ngIf="!isUserCreated">{{userStatus}}</div>
+    <ng-template #noUser>
+    <div *ngIf="!isUserCreated"  [ngStyle] = "{'background-color':getColor()}">{{userStatus}}</div>
   </ng-template>
 </div>
 
