@@ -1,4 +1,5 @@
 # AngularApp-AllTopicInOne
+
 In this app it will cover most topic in one app. I am creating branch for each topic then on periodical increment I will merge that into Main branch. 
 
 01-AngularBasicSetup branch  --merged in main branch
@@ -302,40 +303,61 @@ In this app it will cover most topic in one app. I am creating branch for each t
 
 04-Interaction Between Components - branch  --merged in develop branch
 
-    PARENT COMPONENT TO CHILD COMPONENT INTERACTION 
+    Communication between Parent to Child and Child to Parent
+        Parent to Child  - we use @Input decorator
+        Child to Parent - we use @Output decorator
 
         EXAMPLE - Communication from Parent to Child component
 
             PARENT -Users- HTML
-            <div class="form-group users-container">
-                <h1 class ="border-wrap text-center">Users Component - Parent Comonent</h1>
-                <h5>Add User</h5>
-                <label>User Name:</label>
-                <!-- [(ngModel)]="userName" this will assign input value to the userName -->
-                <input type="text" class="form-control" [(ngModel)]="userName">
-                <div class="mt-2">
-                <!-- users will be added on click and sending data to child component on click -->
-                    <button class ="btn btn-primary" (click)="userAdded()">Add User</button>
+                <div class ="users-container --Parent Component">
+                    <h1>Users Component -- Parent component</h1>
+                    <!--Getting data from add-user child component and using in Parent component. adding in userList -->
+                    <app-add-user (userAdded)="onUserAdded($event)"></app-add-user>
+                    <div class="mt-3">
+                        <h3>User List</h3>
+                        <!-- sending userList data in user - child component -->
+                        <app-user *ngFor='let user of userList' [userName]="user"></app-user>
+                    </div>
                 </div>
-            </div>
-
-            <div class="mt-3">
-                <h3>User List</h3>
-                <!-- we are sending [userName] data to child component -->
-                <app-user *ngFor='let user of userList' [userName]="user"></app-user>
-            </div>
-
+                
             PARENT -Users- TS
-                 userName:string ='';
-                // creating userList array.
-                userList = [];
-                userAdded(){
-                    // userName is assinged to [(ngModel)]="userName" . so whatever input entered it will push in the userList
-                    this.userList.push(this.userName)
-                }
+                    // creating userList array.
+                    userList = [];
 
-            CHILD -User- HTML
-              <h5>{{ userName }}</h5>
+                    onUserAdded(event){
+                        this.userList.push(event)
+                        }
+                        
+            CHILD -User- HTML -- It is for communicating from Parent to child
 
+                <div class="user-container">
+                    <h1 class="border-wrap text-center">User Component - Child Component</h1>
+                    <h5>{{ userName }}</h5>
+                </div>
             CHILD -User- TS
-              @Input() userName: string;
+                 @Input() userName: string;
+
+            CHILD -Add-User - HTML  --- It is for communicating from child to Parent
+                <div class="form-group users-container">
+                    <h1 class ="border-wrap text-center">Add-Users Component -Child Component</h1>
+                    <h5>Add User</h5>
+                    <label>User Name:</label>
+                    <input type="text" class="form-control" [(ngModel)]="userName">
+                    <div class="mt-2">
+                        <!-- we want to send data to Parent compoent i.e users component on emit -->
+                        <button class ="btn btn-primary" (click)="OnUserAdded()">Add User</button>
+                    </div>
+                </div>
+
+            CHILD -Add-User -TS
+                userName: string;
+                @Output() userAdded = new EventEmitter<string>();
+                constructor() {}
+
+                ngOnInit() {}
+
+                OnUserAdded() {
+                    // emiting event to send data to Parent component -- sending userName Data to parent component so it can be push in userList
+                    this.userAdded.emit(this.userName);
+                }
