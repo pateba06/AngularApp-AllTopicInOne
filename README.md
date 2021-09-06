@@ -365,7 +365,7 @@ In this app it will cover most topic in one app. I am creating branch for each t
 05-usingLocalReferencesInAngular
 
 
-        Example
+        Example - usingLocalReferencesInAngular
 
         HTML
         <!-- template reference variable . we can directly use it #userInput -->
