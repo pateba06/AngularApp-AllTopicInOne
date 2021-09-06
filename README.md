@@ -301,3 +301,41 @@ In this app it will cover most topic in one app. I am creating branch for each t
 
 
 04-Interaction Between Components - branch  --merged in develop branch
+
+    PARENT COMPONENT TO CHILD COMPONENT INTERACTION 
+
+        EXAMPLE - Communication from Parent to Child component
+
+            PARENT -Users- HTML
+            <div class="form-group users-container">
+                <h1 class ="border-wrap text-center">Users Component - Parent Comonent</h1>
+                <h5>Add User</h5>
+                <label>User Name:</label>
+                <!-- [(ngModel)]="userName" this will assign input value to the userName -->
+                <input type="text" class="form-control" [(ngModel)]="userName">
+                <div class="mt-2">
+                <!-- users will be added on click and sending data to child component on click -->
+                    <button class ="btn btn-primary" (click)="userAdded()">Add User</button>
+                </div>
+            </div>
+
+            <div class="mt-3">
+                <h3>User List</h3>
+                <!-- we are sending [userName] data to child component -->
+                <app-user *ngFor='let user of userList' [userName]="user"></app-user>
+            </div>
+
+            PARENT -Users- TS
+                 userName:string ='';
+                // creating userList array.
+                userList = [];
+                userAdded(){
+                    // userName is assinged to [(ngModel)]="userName" . so whatever input entered it will push in the userList
+                    this.userList.push(this.userName)
+                }
+
+            CHILD -User- HTML
+              <h5>{{ userName }}</h5>
+
+            CHILD -User- TS
+              @Input() userName: string;
