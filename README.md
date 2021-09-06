@@ -1,4 +1,5 @@
 # AngularApp-AllTopicInOne
+
 In this app it will cover most topic in one app. I am creating branch for each topic then on periodical increment I will merge that into Main branch. 
 
 01-AngularBasicSetup branch  --merged in main branch
@@ -302,8 +303,8 @@ In this app it will cover most topic in one app. I am creating branch for each t
 
 04-Interaction Between Components - branch  --merged in develop branch
 
-    PARENT COMPONENT TO CHILD COMPONENT INTERACTION 
-
+  PARENT COMPONENT TO CHILD COMPONENT INTERACTION 
+  ![image](https://user-images.githubusercontent.com/34305933/132247606-c7028d7d-247a-4ce4-a4a9-c6f588cb5cec.png)
         EXAMPLE - Communication from Parent to Child component
 
             PARENT -Users- HTML
@@ -339,3 +340,5 @@ In this app it will cover most topic in one app. I am creating branch for each t
 
             CHILD -User- TS
               @Input() userName: string;
+              
+     
