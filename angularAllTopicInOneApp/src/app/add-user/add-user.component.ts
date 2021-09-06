@@ -12,8 +12,9 @@ export class AddUserComponent implements OnInit {
 
   ngOnInit() {}
 
-  OnUserAdded() {
+  OnUserAdded(userInput) {
     // emiting event to send data to Parent component -- sending userName Data to parent component so it can be push in userList
-    this.userAdded.emit(this.userName);
+    // this.userAdded.emit(this.userName);
+    this.userAdded.emit(userInput.value);
   }
 }

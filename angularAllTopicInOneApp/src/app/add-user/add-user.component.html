@@ -2,9 +2,11 @@
   <h1 class ="border-wrap text-center">Add-Users Component -Child Component</h1>
   <h5>Add User</h5>
   <label>User Name:</label>
-  <input type="text" class="form-control" [(ngModel)]="userName">
+  <!-- <input type="text" class="form-control" [(ngModel)]="userName"> -->
   <div class="mt-2">
     <!-- we want to send data to Parent compoent i.e users component on emit -->
-      <button class ="btn btn-primary" (click)="OnUserAdded()">Add User</button>
+<!-- using local reference example -->
+    <input type="text" class="form-control" #userInput>
+      <button class ="btn btn-primary" (click)="OnUserAdded(userInput)">Add User</button>
   </div>
 </div>

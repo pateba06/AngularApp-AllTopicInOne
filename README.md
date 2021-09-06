@@ -362,3 +362,19 @@ In this app it will cover most topic in one app. I am creating branch for each t
                     this.userAdded.emit(this.userName);
                 }
 
+05-usingLocalReferencesInAngular
+
+
+        Example - usingLocalReferencesInAngular
+
+        HTML
+        <!-- template reference variable . we can directly use it #userInput -->
+            <input type="text" class="form-control" #userInput>
+            <button class ="btn btn-primary" (click)="OnUserAdded(userInput)">Add User</button>
+            <h1> {{userName}}</h1>
+        TS
+            userName:string;
+
+         OnUserAdded(data) {
+             this.userNmae = data.value
+        }
