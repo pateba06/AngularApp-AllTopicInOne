@@ -48,4 +48,11 @@ export class UsersComponent implements OnInit {
       return 'red';
     }
   }
+
+  // ngClass example
+  mtlclasses = {
+    class1: true,
+    class2: true,
+    class3: true
+  }
 }

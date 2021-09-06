@@ -190,7 +190,7 @@ In this app it will cover most topic in one app. I am creating branch for each t
           }
 
 
-*ngStyle - Attribugte Directives
+*ngStyle - Attribute Directives
 
     We use ngStyle , when we want to apply particular style to  particular Element. We can apply dynamical style based on requirement.
     
@@ -211,4 +211,27 @@ In this app it will cover most topic in one app. I am creating branch for each t
                 }
                 if(this.isUserCreated === false){
                 return 'red';
+                }
+
+*ngClass - Attribute Directives
+    We can apply dynamic class using *ngClass
+
+    Example - *ngClass
+
+        Html
+         <!-- Using [ngClass] directive - to assign multiple classes Inspect to see class-->
+            <div class="box" [ngClass]="'class1 class2 class3'">
+                <p>[ngclass] directive</p>
+            </div>
+            <!-- Using [ngClass]  directive- to assign multiple classes Inspect to see class are added uinng object-->
+            <div class="box" [ngClass]="mtlclasses">
+                <p>[ngclass] directive</p>
+            </div>
+        TS
+
+              // ngClass example
+                mtlclasses = {
+                    class1: true,
+                    class2: true,
+                    class3: true
                 }
