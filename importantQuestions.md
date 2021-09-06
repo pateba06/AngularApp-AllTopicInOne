@@ -48,61 +48,40 @@ View Encapsulation in Angular. Difference between Emulated, None, and Shadow Dom
    
     None: Neither Shadow DOM nor custom implementation, like global CSS which gets appended to the head
 
+    Angular life cycle hooks
+    
+    
+    constructor:: This is invoked when Angular creates a component or directive by calling `new` on the class.
 
-Hook method	Purpose	Timing
+    ngOnChanges:: Invoked *every* time there is a change in one of th _input_ properties of the component.
 
-    ngOnChanges()	
-        Respond when Angular sets or resets data-bound input properties. 
-        The method receives a SimpleChanges object of current and previous property values.
+    ngOnInit::
+    Invoked when given component has been initialized. +
+    This hook is only called *once* after the first `ngOnChanges`
 
-        Note that this happens very frequently, so any operation you perform here impacts performance significantly. 
-        See details in Using change detection hooks in this document.Called before ngOnInit() (if the component has bound inputs) 
-        and whenever one or more data-bound input properties change.
+    ngDoCheck::
+    Invoked when the change detector of the given component is invoked.
+    It allows us to implement our own change detection algorithm for the given component. +
+    +
+    IMPORTANT: `ngDoCheck` and `ngOnChanges` should not be implemented together on the same component.
+    +
+    NOTE: We will cover this hook in more detail in the _Advanced Components_ section at the end of this course.
 
-        Note that if your component has no inputs or you use it without providing any inputs,
-        the framework will not call ngOnChanges().
+    ngOnDestroy::
+    This method will be invoked just before Angular destroys the component. +
+    Use this hook to unsubscribe observables and detach event handlers to avoid memory leaks.
 
-    ngOnInit()	
-        Initialize the directive or component after Angular first displays the data-bound properties and sets the directive 
-        or component's input properties.
-        See details in   Initializing a component or directive in this document.
+    === Hooks for the Component's Children
 
-        Called once, after the first ngOnChanges(). 
-        ngOnInit() is still called even when ngOnChanges() is not (which is the case when there are no template-bound inputs).
+    These hooks are only called for components and not directives.
 
-    ngDoCheck()	
-        Detect and act upon changes that Angular can't or won't detect on its own. See details and example in Defining custom change detection in this document.
+    NOTE: We will cover the difference between Components and Directives in the next section.
 
-        Called immediately after ngOnChanges() on every change detection run, and immediately after ngOnInit() on the first run.
+    ngAfterContentInit::
+    Invoked _after_ Angular performs any content projection into the component's view (see the previous lecture on _Content Projection_ for more info). +
 
-    ngAfterContentInit()	
-        Respond after Angular projects external content into the component's view, or into the view that a directive is in.
+    ngAfterContentChecked:: Invoked each time the content of the given component has been checked by the change detection mechanism of Angular.
 
-        See details and example in Responding to changes in content in this document.
+    ngAfterViewInit:: Invoked when the component's view has been fully initialized.
 
-        Called once after the first ngDoCheck().
-
-        ngAfterContentChecked()	
-        Respond after Angular checks the content projected into the directive or component.
-
-        See details and example in Responding to projected content changes in this document.
-
-        Called after ngAfterContentInit() and every subsequent ngDoCheck().
-
-    ngAfterViewInit()	
-        Respond after Angular initializes the component's views and child views, or the view that contains the directive.
-
-        See details and example in Responding to view changes in this document.
-
-        Called once after the first ngAfterContentChecked().
-
-    ngAfterViewChecked()	
-        Respond after Angular checks the component's views and child views, or the view that contains the directive.
-
-        Called after the ngAfterViewInit() and every subsequent ngAfterContentChecked().
-
-    ngOnDestroy()	
-        Cleanup just before Angular destroys the directive or component.
-        Unsubscribe Observables and detach event handlers to avoid memory leaks. 
-        See details in Cleaning up on instance destruction in this document.
-        Called immediately before Angular destroys the directive or component.
+    ngAfterViewChecked:: Invoked each time the view of the given component has been checked by the change detection mechanism of Angular.
