@@ -355,16 +355,9 @@ In this app it will cover most topic in one app. I am creating branch for each t
                 @Output() userAdded = new EventEmitter<string>();
                 constructor() {}
 
-<<<<<<< HEAD
                 ngOnInit() {}
 
                 OnUserAdded() {
                     // emiting event to send data to Parent component -- sending userName Data to parent component so it can be push in userList
                     this.userAdded.emit(this.userName);
                 }
-=======
-            CHILD -User- TS
-              @Input() userName: string;
-              
-     
->>>>>>> 27fd05a376899231005c4d460304bc10c454c799
