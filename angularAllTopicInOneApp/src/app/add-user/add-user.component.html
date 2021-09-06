@@ -5,8 +5,11 @@
   <!-- <input type="text" class="form-control" [(ngModel)]="userName"> -->
   <div class="mt-2">
     <!-- we want to send data to Parent compoent i.e users component on emit -->
-<!-- using local reference example -->
+    <!-- using local reference example -->
     <input type="text" class="form-control" #userInput>
       <button class ="btn btn-primary" (click)="OnUserAdded(userInput)">Add User</button>
+      <!-- showing example of viewchild -->
+      <input type="text" class="form-control" #userInputViewChild>
+      <button class ="btn btn-primary" (click)="onUserAddedViewChild()">Add User using View Child</button>
   </div>
 </div>
