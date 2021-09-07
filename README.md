@@ -397,3 +397,35 @@ In this app it will cover most topic in one app. I am creating branch for each t
                 // accessing the #userInputViewChild template ref variable and using viewChild  and accessing the value
                 this.userAdded.emit(this.userInputViewChild.nativeElement.value)
                 }
+
+
+07-LifeCycleHooks
+
+    constructor:: This is invoked when Angular creates a component or directive by calling `new` on the class.
+
+    ngOnChanges:: Invoked *every* time there is a change in one of th _input_ properties of the component.
+
+    ngOnInit::
+    Invoked when given component has been initialized. +
+    This hook is only called *once* after the first `ngOnChanges`
+
+    ngDoCheck::
+    Invoked when the change detector of the given component is invoked.
+    It allows us to implement our own change detection algorithm for the given component. +
+    IMPORTANT: `ngDoCheck` and `ngOnChanges` should not be implemented together on the same component.
+    This hook should be use wisely as it can decrease the performace
+
+    ngAfterContentInit::
+    Invoked _after_ Angular performs any content projection into the component's view (see the previous lecture on _Content Projection_ for more info). 
+
+    ngAfterContentChecked:: Invoked each time the content of the given component has been checked by the change detection mechanism of Angular.
+
+    ngAfterViewInit:: Invoked when the component's view has been fully initialized.
+
+    ngAfterViewChecked:: Invoked each time the view of the given component has been checked by the change detection mechanism of Angular.
+
+        ngOnDestroy::
+    This method will be invoked just before Angular destroys the component. +
+    Use this hook to unsubscribe observables and detach event handlers to avoid memory leaks.
+
+    === Hooks for the Component's Children

@@ -4,7 +4,16 @@
     <app-add-user (userAdded)="onUserAdded($event)"></app-add-user>
 <div class="mt-3">
     <h3>User List</h3>
+    <!-- adding button to see ngOnChanges -->
+    <button class="btn btn-primary" (click)="onNameChange()">Change Name</button>
+        <!-- adding button to see ngOnDestroy -->
+        <button class="btn btn-danger" (click)="onDelete()">Delete Component</button>
     <!-- sending userList data in user - child component -->
-    <app-user *ngFor='let user of userList' [userName]="user"></app-user>
+    <app-user *ngFor='let user of userList' [userName]="user" [name]="name">
+        <!-- we can keep below thing if we use ng-template in app=user -->
+        <h1 class="border-wrap text-center">User Component - Child Component</h1>
+        <h5>{{ userName }}</h5>
+        <h6>ngOnchanges example {{name}}</h6>
+    </app-user>
 </div>
 </div>
