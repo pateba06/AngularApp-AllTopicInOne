@@ -298,3 +298,16 @@ In this app it will cover most topic in one app. I am creating branch for each t
                 price: '140000',
                 },
             ];
+
+
+*ngSwitch 
+    ngSwitch ,ngSwitchCase, ngSwitchDefault
+    
+        Example
+
+            <!-- ngSwitch/ngSwitchCase/ngSwitchDefault directive example -->
+        <div [ngSwitch]="value">
+            <div *ngSwitchCase="10">Value is 10</div>
+            <div *ngSwitchCase="15">Value is 15</div>
+            <div *ngSwitchDefault>Value is default</div>
+        </div>
