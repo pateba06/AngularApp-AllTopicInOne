@@ -335,3 +335,235 @@ In this app it will cover most topic in one app. I am creating branch for each t
             <div *ngSwitchCase="15">Value is 15</div>
             <div *ngSwitchDefault>Value is default</div>
         </div>
+        
+        
+        
+  ---From 04 the code is merged in develop Branch
+        
+04-Interaction Between Components - branch  --merged in develop branch
+
+    Communication between Parent to Child and Child to Parent
+        Parent to Child  - we use @Input decorator
+        Child to Parent - we use @Output decorator
+
+        EXAMPLE - Communication from Parent to Child component
+
+            PARENT -Users- HTML
+                <div class ="users-container --Parent Component">
+                    <h1>Users Component -- Parent component</h1>
+                    <!--Getting data from add-user child component and using in Parent component. adding in userList -->
+                    <app-add-user (userAdded)="onUserAdded($event)"></app-add-user>
+                    <div class="mt-3">
+                        <h3>User List</h3>
+                        <!-- sending userList data in user - child component -->
+                        <app-user *ngFor='let user of userList' [userName]="user"></app-user>
+                    </div>
+                </div>
+                
+            PARENT -Users- TS
+                    // creating userList array.
+                    userList = [];
+
+                    onUserAdded(event){
+                        this.userList.push(event)
+                        }
+                        
+            CHILD -User- HTML -- It is for communicating from Parent to child
+
+                <div class="user-container">
+                    <h1 class="border-wrap text-center">User Component - Child Component</h1>
+                    <h5>{{ userName }}</h5>
+                </div>
+            CHILD -User- TS
+                 @Input() userName: string;
+
+            CHILD -Add-User - HTML  --- It is for communicating from child to Parent
+                <div class="form-group users-container">
+                    <h1 class ="border-wrap text-center">Add-Users Component -Child Component</h1>
+                    <h5>Add User</h5>
+                    <label>User Name:</label>
+                    <input type="text" class="form-control" [(ngModel)]="userName">
+                    <div class="mt-2">
+                        <!-- we want to send data to Parent compoent i.e users component on emit -->
+                        <button class ="btn btn-primary" (click)="OnUserAdded()">Add User</button>
+                    </div>
+                </div>
+
+            CHILD -Add-User -TS
+                userName: string;
+                @Output() userAdded = new EventEmitter<string>();
+                constructor() {}
+
+                ngOnInit() {}
+
+                OnUserAdded() {
+                    // emiting event to send data to Parent component -- sending userName Data to parent component so it can be push in userList
+                    this.userAdded.emit(this.userName);
+                }
+
+05-usingLocalReferencesInAngular
+
+
+        Example - usingLocalReferencesInAngular
+
+        HTML
+        <!-- template reference variable . we can directly use it #userInput -->
+            <input type="text" class="form-control" #userInput>
+            <button class ="btn btn-primary" (click)="OnUserAdded(userInput)">Add User</button>
+            <h1> {{userName}}</h1>
+        TS
+            userName:string;
+
+         OnUserAdded(data) {
+             this.userNmae = data.value
+        }
+
+06-viewChildAndElementRef
+
+    Access Html Elements in the DOM & Template with @ViewChild and the type ElementRef in angular
+
+        HTML
+          <input type="text" class="form-control" #userInputViewChild>
+         <button class ="btn btn-primary" (click)="onUserAddedViewChild()">Add User using View Child</button>
+        TS
+            <!-- this is for child to parent comumnication -->
+             @Output() userAdded = new EventEmitter<string>();
+
+            <!-- usingView child by referencing template Reference variable and accessing the value using Element Ref -->
+            @ViewChild('userInputViewChild') userInputViewChild:ElementRef
+              // below function to show example of viewchild
+            onUserAddedViewChild(){
+                // accessing the #userInputViewChild template ref variable and using viewChild  and accessing the value
+                this.userAdded.emit(this.userInputViewChild.nativeElement.value)
+                }
+
+
+07-LifeCycleHooks
+
+    constructor:: This is invoked when Angular creates a component or directive by calling `new` on the class.
+
+    ngOnChanges:: Invoked *every* time there is a change in one of th _input_ properties of the component.
+
+    ngOnInit::
+    Invoked when given component has been initialized. +
+    This hook is only called *once* after the first `ngOnChanges`
+
+    ngDoCheck::
+    Invoked when the change detector of the given component is invoked.
+    It allows us to implement our own change detection algorithm for the given component. +
+    IMPORTANT: `ngDoCheck` and `ngOnChanges` should not be implemented together on the same component.
+    This hook should be use wisely as it can decrease the performace
+
+    ngAfterContentInit::
+    Invoked _after_ Angular performs any content projection into the component's view (see the previous lecture on _Content Projection_ for more info). 
+
+    ngAfterContentChecked:: Invoked each time the content of the given component has been checked by the change detection mechanism of Angular.
+
+    ngAfterViewInit:: Invoked when the component's view has been fully initialized.
+
+    ngAfterViewChecked:: Invoked each time the view of the given component has been checked by the change detection mechanism of Angular.
+
+        ngOnDestroy::
+    This method will be invoked just before Angular destroys the component. +
+    Use this hook to unsubscribe observables and detach event handlers to avoid memory leaks.
+
+    === Hooks for the Component's Children
+
+
+
+08-creatingCustomAttributeDirective
+
+    When the directive gets created Angular can inject an instance of something called ElementRef into its constructor.
+    The ElementRef gives the directive direct access to the DOM element upon which it’s attached.
+
+    1 create directive
+
+            import { Directive, ElementRef, OnInit } from '@angular/core';
+
+                @Directive({
+                selector: '[appHighlightText]'
+                })
+                export class HighlightTextDirective implements OnInit {
+                constructor(private element:ElementRef) {
+
+                }
+
+                ngOnInit(){
+                (this.element.nativeElement as HTMLElement).style.backgroundColor = 'red';
+                }
+                }
+
+    2 using the directive in user component
+            user.html
+            <!-- Custom Directive -->
+            <div appHighlightText>Please add the background color red</div>
+
+
+09- Renederer2 - To create the custom attribute directive to manipulate DOM
+
+
+    1 create Directive and use Renderer. We can use renderer2 set style , value and manythings
+
+            import { Directive, ElementRef, OnInit, Renderer2 } from '@angular/core';
+
+            @Directive({
+            selector: '[appRendererHiglight]',
+            })
+            export class RendererHiglightDirective implements OnInit {
+            // we injected Renderer2 using constructor
+            constructor(private element: ElementRef, private renderer: Renderer2) {}
+
+            ngOnInit() {
+                this.renderer.setStyle(
+                this.element.nativeElement,
+                'background-color',
+                'green'
+                );
+              }
+            }
+
+             user.html
+            <!-- Custom Directive Using Renderer -->
+            <div appRendererHiglight>Please add the background using Renderer2</div>
+
+
+10- HostListner --using through directive is also one way of communication
+
+    Accessing the events using HostListner. and changing the element accordingly
+
+
+        renderer-highlight.directive.ts
+
+            import { Directive, ElementRef, HostListener, OnInit, Renderer2 } from '@angular/core';
+
+                @Directive({
+                selector: '[appRendererHiglight]',
+                })
+                export class RendererHiglightDirective implements OnInit {
+                
+                constructor(private element: ElementRef, private renderer: Renderer2) {}
+
+
+                // hostlister will listen to the events of the elements on which this directive is seating on
+                @HostListener('mouseenter') onmouseover (event :Event){
+                    // using HostListener to listen to the mouse event. and change the color accordingly
+                    this.renderer.setStyle(
+                    this.element.nativeElement,
+                    'background-color',
+                    'red'
+                    );
+                }
+
+                // hostlister will listen to the events of the elements on which this directive is seating on
+                @HostListener('mouseleave') onmouseleave (event :Event){
+                // using HostListener to listen to the mouse event. and change the color accordingly
+                this.renderer.setStyle(
+                    this.element.nativeElement,
+                    'background-color',
+                    'yellow'
+                );
+                }
+
+        users.html
+            <div appRendererHiglight>Please add the background using Renderer2</div>
+
