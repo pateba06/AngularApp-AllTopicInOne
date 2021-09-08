@@ -191,6 +191,22 @@ In this app it will cover most topic in one app. I am creating branch for each t
           }
 
 
+    Note - let understand the structure of *ngIF
+
+        <div *ngIf="Available">Shwo the div when isavailable is true<div>
+            The above *ngIf what it will do in the backend it will generate or converted on backend <ng-template> on back
+            -----------
+                <ng-template>
+                    <div>Show the div when isavailable is true</div>
+                </ng-template>
+            ---------
+
+            So that why we can write *ngIf other way as well and it will work as *ngIf. by keeping [propertybinding]=""
+                <ng-template [ngIf]="isAvailable">                    // This will work same as keeping *ngIf in div or other element
+                    <div>Show the div when isavailable is true</div>
+                </ng-template>
+                
+                
 *ngStyle - Attribute Directives
 
     We use ngStyle , when we want to apply particular style to  particular Element. We can apply dynamical style based on requirement.
