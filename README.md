@@ -439,21 +439,50 @@ In this app it will cover most topic in one app. I am creating branch for each t
 
     1 create directive
 
-    import { Directive, ElementRef, OnInit } from '@angular/core';
+            import { Directive, ElementRef, OnInit } from '@angular/core';
 
-        @Directive({
-        selector: '[appHighlightText]'
-        })
-        export class HighlightTextDirective implements OnInit {
-        constructor(private element:ElementRef) {
+                @Directive({
+                selector: '[appHighlightText]'
+                })
+                export class HighlightTextDirective implements OnInit {
+                constructor(private element:ElementRef) {
 
-        }
+                }
 
-        ngOnInit(){
-        (this.element.nativeElement as HTMLElement).style.backgroundColor = 'red';
-        }
-        }
+                ngOnInit(){
+                (this.element.nativeElement as HTMLElement).style.backgroundColor = 'red';
+                }
+                }
 
     2 using the directive in user component
-        <!-- Custom Directive -->
-        <div appHighlightText>Please add the background color red</div>
+            user.html
+            <!-- Custom Directive -->
+            <div appHighlightText>Please add the background color red</div>
+
+
+09- Renederer2 - To create the custom attribute directive to manipulate DOM
+
+
+    1 create Directive and use Renderer. We can use renderer2 set style , value and manythings
+
+            import { Directive, ElementRef, OnInit, Renderer2 } from '@angular/core';
+
+            @Directive({
+            selector: '[appRendererHiglight]',
+            })
+            export class RendererHiglightDirective implements OnInit {
+            // we injected Renderer2 using constructor
+            constructor(private element: ElementRef, private renderer: Renderer2) {}
+
+            ngOnInit() {
+                this.renderer.setStyle(
+                this.element.nativeElement,
+                'background-color',
+                'green'
+                );
+              }
+            }
+
+             user.html
+            <!-- Custom Directive Using Renderer -->
+            <div appRendererHiglight>Please add the background using Renderer2</div>
