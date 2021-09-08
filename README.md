@@ -1,4 +1,11 @@
 # AngularApp-AllTopicInOne
+
+** Note
+
+main - This branch has upto 3 topics
+
+develop - This branch has topic post 3
+
 In this app it will cover most topic in one app. I am creating branch for each topic then on periodical increment I will merge that into Main branch. 
 
 01-AngularBasicSetup branch
@@ -189,6 +196,23 @@ In this app it will cover most topic in one app. I am creating branch for each t
               this.isUserCreated = true;
           }
 
+
+    Note - let understand the structure of *ngIF
+
+        <div *ngIf="Available">Shwo the div when isavailable is true<div>
+            The above *ngIf what it will do in the backend it will generate or converted on backend <ng-template> on back
+            -----------
+                <ng-template>
+                    <div>Show the div when isavailable is true</div>
+                </ng-template>
+            ---------
+
+            So that why we can write *ngIf other way as well and it will work as *ngIf. by keeping [propertybinding]=""
+                <ng-template [ngIf]="isAvailable">                    // This will work same as keeping *ngIf in div or other element
+                    <div>Show the div when isavailable is true</div>
+                </ng-template>
+                
+                
 
 *ngStyle - Attribute Directives
 
