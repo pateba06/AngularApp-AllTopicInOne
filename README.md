@@ -488,7 +488,7 @@ In this app it will cover most topic in one app. I am creating branch for each t
             <div appRendererHiglight>Please add the background using Renderer2</div>
 
 
-10- HostListner 
+10- HostListner --using through directive is also one way of communication
 
     Accessing the events using HostListner. and changing the element accordingly
 
