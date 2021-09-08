@@ -429,3 +429,31 @@ In this app it will cover most topic in one app. I am creating branch for each t
     Use this hook to unsubscribe observables and detach event handlers to avoid memory leaks.
 
     === Hooks for the Component's Children
+
+
+
+08-creatingCustomAttributeDirective
+
+    When the directive gets created Angular can inject an instance of something called ElementRef into its constructor.
+    The ElementRef gives the directive direct access to the DOM element upon which it’s attached.
+
+    1 create directive
+
+    import { Directive, ElementRef, OnInit } from '@angular/core';
+
+        @Directive({
+        selector: '[appHighlightText]'
+        })
+        export class HighlightTextDirective implements OnInit {
+        constructor(private element:ElementRef) {
+
+        }
+
+        ngOnInit(){
+        (this.element.nativeElement as HTMLElement).style.backgroundColor = 'red';
+        }
+        }
+
+    2 using the directive in user component
+        <!-- Custom Directive -->
+        <div appHighlightText>Please add the background color red</div>
