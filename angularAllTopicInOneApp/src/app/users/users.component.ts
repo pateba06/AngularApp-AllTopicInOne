@@ -16,6 +16,7 @@ export class UsersComponent implements OnInit {
   // isUserCreated we created for *ngIf
   isUserCreated = false;
 
+  value=15;
   // *ngFor Example - we have array of object
   product = [
     {
