@@ -1,4 +1,5 @@
 import { Component , OnInit } from '@angular/core';
+import { LoggingService } from '../services/logging.service';
 
 @Component({
   selector: 'app-users',
@@ -12,7 +13,7 @@ export class UsersComponent implements OnInit {
 
   // created name variable to show the ngOnchages example
   name ="Badal Patel"
-  constructor() {
+  constructor(private loggingService: LoggingService) {
   }
 
   ngOnInit() {
@@ -20,6 +21,8 @@ export class UsersComponent implements OnInit {
 
   onUserAdded(event){
     this.userList.push(event)
+    // calling method from services
+    this.loggingService.functionFromLoggingService()
   }
 
 // below function is created to see ngOnChanges example

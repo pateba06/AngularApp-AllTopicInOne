@@ -556,3 +556,39 @@ In this app it will cover most topic in one app. I am creating branch for each t
 
         users.html
             <div appRendererHiglight>Please add the background using Renderer2</div>
+
+
+11 - Services
+
+    it is kind of central repository. Instead of writing same code in multiple components, we can write in services and use it.
+
+    dependency injection will inject depended classes
+
+
+    Example 1 - service injection
+
+        make sure to import service in provicers
+    
+        loggin.service.ts
+
+         import { Injectable } from '@angular/core';
+        @Injectable({
+        providedIn: 'root'
+        })
+        export class LoggingService {
+        constructor() { }
+
+        functionFromLoggingService(){
+        console.log("I am being called from Service file injected in user component")
+        }
+        }
+
+        user.component.ts
+         constructor(private loggingService: LoggingService) {
+        }
+
+        <!-- calling method from service -->
+          onUserAdded(event){
+            // calling method from services
+            this.loggingService.functionFromLoggingService()
+        }
