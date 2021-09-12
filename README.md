@@ -821,3 +821,49 @@ In this app it will cover most topic in one app. I am creating branch for each t
                 alert(data)
                 })
             }
+
+
+15-angularRouting-setup-loadRoutes
+
+    Example of Routing -- Basic
+
+    app.component.html
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                            <ul class="nav flex-column">
+                                <li class="nav-item"><a href="/">Home</a></li>
+                                <li class="nav-item"><a href="/users">Users</a></li>
+                                <li class="nav-item"><a href="/categories">Categories</a></li>
+                            </ul>
+                            </div>
+                            <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-md-12">
+                                <router-outlet></router-outlet>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+    Then define the routes. We define array of objects, object has path i.e url structure and define which component it will open.
+    We have to make sure routermodule and Routes are imported
+    aldo in @ngModule -- RoterModule.forRoot(appRoutes) --need to be done
+
+                app.module.ts
+                    import { BrowserModule } from '@angular/platform-browser';
+                    import { RouterModule, Routes } from '@angular/router';
+
+                    // definining array of Routes
+                    const appRoutes:Routes= [
+                    {path:'',component: HomeComponent},
+                    {path:'users',component:UsersComponent},
+                    {path:'categories',component:CategoriesComponent}
+                    ]
+
+                    @NgModule({
+                    imports: [BrowserModule, FormsModule ,RouterModule.forRoot(appRoutes)],
+                    })
