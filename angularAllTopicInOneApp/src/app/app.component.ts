@@ -1,19 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from './services/user.service';
+import { Component} from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
-  // users type of array and defining data type and keeping empty array.created user property array of name and status
-  users: { name: string; status: string }[] = [];
+export class AppComponent  {
 
-  constructor(private userService: UserService) {}
+  constructor() {}
 
-  ngOnInit() {
-    // getting user from service
-    this.users = this.userService.users;
-  }
+
 }
