@@ -664,5 +664,3 @@ In this app it will cover most topic in one app. I am creating branch for each t
                 2 - sending data frin Parent component to Child component. i.e from app.component to user.component
                 3 - accessing the data in user component. The data is coming from service
 
-
-![serviceExample](https://github.com/pateba06/AngularApp-AllTopicInOne/tree/develop3/angularAllTopicInOneApp/src/assets/12-usingservicesasdataexample.jpeg)
