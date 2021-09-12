@@ -937,3 +937,49 @@ In this app it will cover most topic in one app. I am creating branch for each t
                         // it is property so we have to give array type of data. We can also pass id
                         this.router.navigate(['/categories']);
                     }
+
+
+18-Passing and Fetching Parameters to Routes using ActivatedRoute snapshot in Angular
+
+    Getting dynamic data using url by activated Routing
+
+    app.module.ts
+        <!-- defining rounting of user with params-->
+        const appRoutes:Routes= [
+        {path:'',component: HomeComponent},
+        {path:'users',component:UsersComponent},
+        // dynamic route using id and prams
+        {path:'users/:id/:name',component:UserComponent},
+        {path:'categories',component:CategoriesComponent}
+        ]
+
+    user.component.ts
+        export class UserComponent implements OnInit {
+
+            // will get two things in user id and name
+            user:{ id:string;name:string }
+
+            // activatedRoute - it is for current active route
+            constructor(private route: ActivatedRoute) { }
+
+            ngOnInit(): void {
+                // snapshot ..the params of the identifier we will use
+                this.user = {
+                id: this.route.snapshot.params['id'],
+                name: this.route.snapshot.params['name'],
+                }
+            }
+        }
+
+
+    user.component.html
+    so now if you pass in url localhost:4200/
+        <div>
+            <div>User with id is  {{user.id}}</div>
+            <div>User with id is  {{user.name}}</div>
+        </div>
+
+    so now if you pass url 
+    http://localhost:4200/users/1/badal
+
+    it will load the user component and will show inside the users. Run it to check
