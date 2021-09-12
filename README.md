@@ -896,3 +896,44 @@ In this app it will cover most topic in one app. I am creating branch for each t
                 </div>
             </div>
             </div>
+
+
+17-navigating using Router programmatically in typescript code
+
+
+            user.component.html
+            <a routerLink="/categories"> Go To Categories</a> -->
+
+            Note: above we are using routerLink - it wil navigate on click of the anchor. But we want to navigate
+            after we are performing some logic or after succesful logic. i.e by using button then let see in below example
+
+
+    we will see how we can navigate using programming.
+
+    we will see in this example - when you submit form and then you want to navigate from one page to page
+
+
+    Example --- navigating using typescript after successful performance of logic
+
+        user.component.html
+
+                    <button (click)="onCategoriesClick1()">Go To Categories using Router - navigateByUrl</button>
+                    <button (click)="onCategoriesClick2()">Go To Categories using Router - navigate</button>
+
+        user.component.ts
+
+                    import { Router } from '@angular/router';
+
+                     constructor(private router: Router) {}
+
+                    // option1 -  navigate using router -navigateByURL
+                    onCategoriesClick1() {
+                        // perform some logig and then navigagte to page
+                        this.router.navigateByUrl('/categories');
+                    }
+
+                    // option 2 -  navigate using router -navigate
+                    onCategoriesClick2() {
+                        // it is property so we have to give array type of data. We can also pass id
+                        this.router.navigate(['/categories']);
+                    }
