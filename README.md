@@ -665,3 +665,6 @@ In this app it will cover most topic in one app. I am creating branch for each t
                 3 - accessing the data in user component. The data is coming from service
 
                 
+                
+   ![image](https://user-images.githubusercontent.com/34305933/132966647-77346206-71b0-4968-96ba-25563b8fe4bf.png)
+
