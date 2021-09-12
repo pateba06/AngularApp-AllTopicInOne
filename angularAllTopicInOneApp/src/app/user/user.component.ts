@@ -15,4 +15,6 @@ export class UserComponent {
   onupdateStatus(status: string) {
     this.userService.updateStatus(this.id, status);
   }
+
+  
 }

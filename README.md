@@ -797,3 +797,27 @@ In this app it will cover most topic in one app. I am creating branch for each t
                 this.loggingStatus.logStatus(status)
             }
 
+14-Using-servicesForCrossComponent-Interaction 
+    
+    in this we will see how using service we do interaction between components
+
+
+    Example
+    user.service.ts
+    <!-- we added eventEmitter for status update. we can emit event from service itself  -->
+               statusUpdate = new EventEmitter<string>();
+                // method to change userStatus by using id
+                updateStatus(id:number , status:string){
+                    this.users[id].status = status;
+                    // using eventEmitter to emit status --added emit event
+                    this.statusUpdate.emit(status)
+                    // calling logStatus method from another service and will show status whether is active or inactive
+                    this.loggingStatus.logStatus(status)
+                }
+
+    user.component.ts
+                ngOnInit(){
+                this.userService.statusUpdate.subscribe((data)=>{
+                alert(data)
+                })
+            }

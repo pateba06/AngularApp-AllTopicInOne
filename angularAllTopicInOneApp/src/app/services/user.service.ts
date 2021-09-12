@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+
 import { LoggingService } from './logging.service';
 
 @Injectable({
@@ -13,6 +14,8 @@ export class UserService {
     { name: 'Sheetal', status: 'Active' },
   ];
 
+  statusUpdate = new EventEmitter<string>();
+
   // method to add user
   addUser( name:string , status:string){
     this.users.push({name,status});
@@ -23,6 +26,8 @@ export class UserService {
   // method to change userStatus by using id
   updateStatus(id:number , status:string){
     this.users[id].status = status;
+    // using eventEmitter to emit status
+    this.statusUpdate.emit(status)
       // calling logStatus method from another service and will show status whether is active or inactive
       this.loggingStatus.logStatus(status)
   }
