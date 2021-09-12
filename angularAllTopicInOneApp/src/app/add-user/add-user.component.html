@@ -1,3 +1,15 @@
-<div class="form-group users-container">
-  add user component
+<div class="users-container">
+  <h2 class="border-wrap"> Child component</h2>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="">User Name</label>
+        <!-- [(ngModel)] --two way binding-->
+        <input type="text" class="form-control" [(ngModel)]="userName">
+      </div>
+      <div class="mt-3">
+        <button class="btn btn-primary" (click)="onAddUdser()">Add User</button>
+      </div>
+    </div>
+  </div>
 </div>

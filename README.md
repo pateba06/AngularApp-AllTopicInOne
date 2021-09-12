@@ -664,7 +664,102 @@ In this app it will cover most topic in one app. I am creating branch for each t
                 2 - sending data frin Parent component to Child component. i.e from app.component to user.component
                 3 - accessing the data in user component. The data is coming from service
 
-                
-                
-   ![image](https://user-images.githubusercontent.com/34305933/132966647-77346206-71b0-4968-96ba-25563b8fe4bf.png)
+
+        *** We have to be careful while injecting the service.
+            heirachical injection is very important. we can add service in individual component by adding provider or we can add at app level i.e app.module.ts
+            
+            Highest possible level we should inject
+                1st level -app-module -> highest level -> same instances will be shared to all components and also services
+                2nd level - app-Component -> Next Highest level -> same instances will be shared to all child components
+                but services have different instance.
+                3rd level- each one will be having different instances
+
+    *Now we want to add user dynamically so for that
+        we will create method in user.service
+        then we will call it in add.user component
+        also we will set active/incative flag from user component, by adding id 
+        we will add id in app.component file
+
+
+    step 4 - Now we want to add-user. For which we will create method in service and use it in add-user.
+
+        user.service.ts
+                // method to add user
+                    addUser( name:string , status:string){
+                        this.users.push({name,status});
+                    }
+
+        
+
+        add-user.html
+             <!-- we will creat form, we will use two-way binding and call service in add-user.html -->
+                <div class="users-container">
+                    <h2 class="border-wrap"> Child component</h2>
+                    <div class="row">
+                        <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="">User Name</label>
+                            <!-- [(ngModel)] --two way binding-->
+                            <input type="text" class="form-control" [(ngModel)]="userName">
+                        </div>
+                        <div class="mt-3">
+                            <button class="btn btn-primary" (click)="onAddUdser()">Add User</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+        add-user.ts
+                export class AddUserComponent {
+                userName : string;
+                constructor(private userService:UserService) {}
+                onAddUdser(){
+                    this.userService.addUser(this.userName,'active')
+                }
+                }
+
+    step 5 - Now we will create two buttons to set active & inactive and will handle it using id.
+
+        app-component-html
+            <!-- adding id 1st and binding with property so we can call in child component i.e user -->
+                <app-user 
+                    *ngFor="let user of users; let i =index" 
+                    [user]="user"
+                    [id]="i"
+                ></app-user>
+
+        user.service.ts
+                // method to change userStatus by using id
+                    updateStatus(id:number , status:string){
+                        this.users[id].status = status;
+                    }
+
+        user-component.html
+                <!-- we added two buttons where it will set active and inactive based on index -->
+                <div>
+                        <h5>userName: {{ user.name }}</h5>
+                        <h5>UserStatus: {{ user.status }}</h5>
+                        <span>
+                            <button class="btn btn-sm btn-primary" (click)="onupdateStatus('active')">Set Active</button>
+                            <button class="btn btn-sm btn-danger" (click)="onupdateStatus('in-active')">Set InActive</button>
+                        </span>
+                </div>
+
+
+        user-component.ts
+
+                export class UserComponent {
+                    @Input() user: { name: string; status: string };
+                    @Input() id: number;
+
+                    constructor(private userService: UserService) {}
+
+                    <!-- calling one more method from service -->
+                    onupdateStatus(status: string) {
+                        this.userService.updateStatus(this.id, status);
+                    }
+                    }
+
+        Note:
+            so we haven't use the event emitter and we used services to shared the data between the components.
 
