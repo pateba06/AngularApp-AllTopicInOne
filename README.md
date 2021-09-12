@@ -762,3 +762,4 @@ In this app it will cover most topic in one app. I am creating branch for each t
 
         Note:
             so we haven't use the event emitter and we used services to shared the data between the components.
+
