@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -18,7 +18,15 @@ export class UserComponent implements OnInit {
       // 
       id: this.route.snapshot.params['id'],
       name: this.route.snapshot.params['name'],
-    }
+    };
+    // we need to listen to params. Whenever params changes we need to execute some code.
+    // this is when we can get dynamic data in same component and use of params
+    this.route.params.subscribe((data:Params) =>{
+      this.user = {
+        id:data['id'],
+        name:data['name']
+      }
+    })
   }
 
 }
