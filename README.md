@@ -796,3 +796,4 @@ In this app it will cover most topic in one app. I am creating branch for each t
                 // calling logStatus method from another service and will show status whether is active or inactive
                 this.loggingStatus.logStatus(status)
             }
+
