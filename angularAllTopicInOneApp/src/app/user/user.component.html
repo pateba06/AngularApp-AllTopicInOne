@@ -1,6 +1,13 @@
 <div class="user-container">
-    <!-- <h1 class="border-wrap text-center">User Component - Child Component</h1>
-    <h5>{{ userName }}</h5>
-    <h6>ngOnchanges example {{name}}</h6> -->
-    <ng-content ></ng-content>
+    <div class="users-container --Parent Component">
+        User Compoent
+        <div>
+            <span>
+                userName: {{ user.name }}
+            </span>
+            <span>
+                UserStatus: {{ user.status }}
+            </span>
+        </div>
+    </div>
 </div>
