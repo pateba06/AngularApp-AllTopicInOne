@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { LoggingService } from './logging.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor() {}
+  constructor(private loggingStatus: LoggingService) {}
 
   users = [
     { name: 'badal', status: 'Active' },
@@ -15,10 +16,14 @@ export class UserService {
   // method to add user
   addUser( name:string , status:string){
     this.users.push({name,status});
+    // calling logStatus method from another service and will show status in console on adding of user
+    this.loggingStatus.logStatus(status)
   }
 
   // method to change userStatus by using id
   updateStatus(id:number , status:string){
     this.users[id].status = status;
+      // calling logStatus method from another service and will show status whether is active or inactive
+      this.loggingStatus.logStatus(status)
   }
 }

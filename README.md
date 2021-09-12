@@ -762,3 +762,37 @@ In this app it will cover most topic in one app. I am creating branch for each t
 
         Note:
             so we haven't use the event emitter and we used services to shared the data between the components.
+
+13-InjectingServicesIntoAnotherServices
+
+    Note - Whenever we are injecting services in another services. We have to use @injectable .
+            For component - @Component injector
+            For directive - @Directive injector
+            but for services we do not have any decorator, so we have @Injectable decorator for service to inject
+            dependancy services.
+
+    
+    Let's log if user is clicking on active and inactive in above flow to see an example
+
+        logging-service.ts
+
+                    logStatus(status:string){
+                        console.log("Logging the status in the console and the status is " + status)
+                    }
+
+
+        user-service.ts
+          //so on every successful addition or change in status. it will call loggin-service and show message in console
+
+            addUser( name:string , status:string){
+                this.users.push({name,status});
+                // calling logStatus method from another service and will show status in console on adding of user
+                this.loggingStatus.logStatus(status)
+            }
+
+        
+            updateStatus(id:number , status:string){
+                this.users[id].status = status;
+                // calling logStatus method from another service and will show status whether is active or inactive
+                this.loggingStatus.logStatus(status)
+            }
