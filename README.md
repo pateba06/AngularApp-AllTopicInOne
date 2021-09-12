@@ -579,3 +579,89 @@ In this app it will cover most topic in one app. I am creating branch for each t
             // calling method from services
             this.loggingService.functionFromLoggingService()
         }
+
+
+12 - usingServiceAsData
+
+    This we will start again from scratch
+
+    Example 1
+
+    step 1 create user service
+
+        user.service.ts           --- created user list
+
+        import { Injectable } from '@angular/core';
+
+        @Injectable({
+        providedIn: 'root',
+        })
+        export class UserService {
+        constructor() {}
+
+        users = [
+            { name: 'badal', status: 'Active' },
+            { name: 'Dhaval', status: 'Active' },
+            { name: 'Sheetal', status: 'Active' },
+        ];
+        }
+
+
+    step 2 app.component.ts  & app.component.html
+
+            app.component.ts         
+            ---accessing data users which was define in service in app.component
+
+            // users type of array and defining data type and keeping empty array.created user property array of name and status
+            users: { name: string; status: string }[] = [];
+
+            constructor(private userService: UserService) {}
+
+            ngOnInit() {
+                // getting user from service
+                this.users = this.userService.users;
+            }
+
+
+            app.component.html
+                <!-- accessing each user and sending the data to user component -->
+                <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                    <app-user *ngFor="let user of users" [user]="user"></app-user>
+                    </div>
+                </div>
+                </div>
+
+
+        step 3 user.component.ts  & user.component.html
+
+            user.compoenent.ts
+              <!-- Getting data from parent component. i.e from app.component.ts -->
+              @Input() user: { name: string; status: string };
+
+
+
+            user.compoenent.html
+                <!-- getting data from parent component i.e from app.compoent.ts and displaying it -->
+                <div class="user-container">
+                    <div class="users-container --Parent Component">
+                        User Compoent
+                        <div>
+                            <span>
+                                userName: {{ user.name }}
+                            </span>
+                            <span>
+                                UserStatus: {{ user.status }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+        Note : So in above three steps
+                1 - Sending data from service to app component
+                2 - sending data frin Parent component to Child component. i.e from app.component to user.component
+                3 - accessing the data in user component. The data is coming from service
+
+                
