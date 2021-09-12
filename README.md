@@ -826,6 +826,7 @@ In this app it will cover most topic in one app. I am creating branch for each t
 15-angularRouting-setup-loadRoutes
 
     Example of Routing -- Basic
+        In this we are navigating with links . Page is getting refresh.
 
     app.component.html
 
@@ -867,3 +868,31 @@ In this app it will cover most topic in one app. I am creating branch for each t
                     @NgModule({
                     imports: [BrowserModule, FormsModule ,RouterModule.forRoot(appRoutes)],
                     })
+
+
+16-Navigating links in the page using RouterLink
+
+    I above we were using href, but that will refresh the page, we do not want to refresh whole page.
+    
+    RouterLink is a special directive in angular
+
+
+    app.component.html
+            <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a routerLink="/" >Home</a></li>
+                    <li class="nav-item"><a routerLink="/users">Users</a></li>
+                    <li class="nav-item"><a routerLink="/categories">Categories</a></li>
+                </ul>
+                </div>
+                <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12">
+                    <router-outlet></router-outlet>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
