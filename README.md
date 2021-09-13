@@ -990,4 +990,4 @@ In this app it will cover most topic in one app. I am creating branch for each t
     so now if you pass url 
     http://localhost:4200/users/1/badal
 
-    it will load the user component and will show inside the users. Run it to check
+
