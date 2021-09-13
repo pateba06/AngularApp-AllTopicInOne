@@ -991,3 +991,50 @@ In this app it will cover most topic in one app. I am creating branch for each t
     http://localhost:4200/users/1/badal
 
 
+19-Passing query Parameters and Fragments to the URL Route
+
+    queryParams -- ?page=1&search=badal
+    framgment --- #load
+
+
+    for example we want at the end of url we can use [queryParams] --?page=1&search=badal
+    [queryParams] - it is an property which will take object key value
+
+    user.component.html
+        <a 
+        [routerLink]="['/users',1,'badal']"
+        [queryParams]="{ page:1,search:'badal'}"
+        > Get Details of badal </a>
+    output : http://localhost:4200/users/1/badal?page=1&search=badal
+
+    Now we want to add Fragments in url.
+    [fragment] -- we have property and it will only take string
+
+    user.component.html
+        <a 
+        [routerLink]="['/users',1,'badal']"
+        [queryParams]="{ page:1,search:'badal'}"
+        [fragment]="'load'"
+        > Get Details of badal </a>
+
+        #load added
+    output : http://localhost:4200/users/1/badal?page=1&search=badal#load  
+
+
+    Example- now dynamically changing query params with params
+
+    user.component.html
+        <div>
+            <button (click)="getDhavalDetails()">
+                Get Dhaval Details
+            </button>
+        </div>
+
+    user.component.ts
+            getDhavalDetails(){
+                this.router.navigate(['/users',2,'Dhaval'] ,
+                {queryParams: {page:3,search:'Dhaval'}})
+            }
+            }
+
+    output : http://localhost:4200/users/2/Dhaval?page=3&search=Dhaval

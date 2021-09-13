@@ -4,4 +4,15 @@
     <div>User with id is  {{user.name}}</div>
 </div>
 
-<a [routerLink]="['/users',1,'badal']"> Get Details of badal </a>
+<a 
+[routerLink]="['/users',1,'badal']"
+[queryParams]="{ page:1,search:'badal'}"
+[fragment]="'load'"
+> Get Details of badal </a>
+
+
+<div>
+    <button (click)="getDhavalDetails()">
+        Get Dhaval Details
+    </button>
+</div>
