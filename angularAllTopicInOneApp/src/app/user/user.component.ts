@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -10,7 +10,7 @@ export class UserComponent implements OnInit {
   // will get two things in user id and name
   user:{ id:string;name:string }
   // activatedRoute - it is for current active route
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
     // snapshot ..the params of the identifier we will use
@@ -29,4 +29,10 @@ export class UserComponent implements OnInit {
     })
   }
 
+
+  // 19- queryparam & fragment example
+  getDhavalDetails(){
+    this.router.navigate(['/users',2,'Dhaval'] ,
+     {queryParams: {page:3,search:'Dhaval'}})
+  }
 }
