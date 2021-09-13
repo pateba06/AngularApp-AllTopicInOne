@@ -8,19 +8,26 @@ import { UsersComponent } from './users/users.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { UserComponent } from './user/user.component';
 
-
 // definining array of Routes
-const appRoutes:Routes= [
-  {path:'',component: HomeComponent},
-  {path:'users',component:UsersComponent},
-  // dynamic route using id and prams
-  {path:'users/:id/:name',component:UserComponent},
-  {path:'categories',component:CategoriesComponent}
-]
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  {
+    path: 'users',
+    component: UsersComponent,
+    children: [{ path: ':id/:name', component: UserComponent }],
+  },
+  { path: 'categories', component: CategoriesComponent },
+];
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, UsersComponent, CategoriesComponent, UserComponent],
-  imports: [BrowserModule, FormsModule ,RouterModule.forRoot(appRoutes)],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    UsersComponent,
+    CategoriesComponent,
+    UserComponent,
+  ],
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
   providers: [],
   bootstrap: [AppComponent],
 })
