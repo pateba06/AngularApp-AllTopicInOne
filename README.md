@@ -1038,3 +1038,31 @@ In this app it will cover most topic in one app. I am creating branch for each t
             }
 
     output : http://localhost:4200/users/2/Dhaval?page=3&search=Dhaval
+
+20 - Retrieving Query Parameters and Fragments from the URL through typescript code in the angular
+
+
+    option 1 - to get queryParams and fragment using route.snapshot.queryParams
+        user.component.html
+            console.log(this.route.snapshot.queryParams)
+            console.log(this.route.snapshot.fragment)
+
+    Option 2- using subscribe method to route
+
+        user.component.html
+
+                // to get data of QueryParams using subscribe
+            this.route.queryParams.subscribe((data)=>{
+                console.log(data)
+            })
+
+            // to get data of fragmet using subscribe
+            this.route.fragment.subscribe((data)=>{
+                console.log(data)
+            })
+
+    output
+    {page: '1', search: 'badal'}
+    load
+
+     Option 2 - using subscribe method to route
