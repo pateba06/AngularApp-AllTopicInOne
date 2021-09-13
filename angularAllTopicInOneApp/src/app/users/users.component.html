@@ -1,9 +1,8 @@
-<ul class="nav flex-column">
-    <li class="nav-item"><a class="nav-link" [routerLink]="['/users',1,'Badal']">Get Badal Details</a></li>
-    <li class="nav-item"><a class="nav-link" [routerLink]="['/users',1,'Dhaval']">Get Dhaval Details</a></li>
-    <li class="nav-item"><a class="nav-link" [routerLink]="['/users',1,'Sheetal']">Get Sheetal Details</a></li>
-</ul>
+<p>users works!</p>
 
 <div>
-    <router-outlet></router-outlet>
+    <!-- this anchor tag will work let's see by using button
+    <a routerLink="/categories"> Go To Categories</a> -->
+    <button (click)="onCategoriesClick1()">Go To Categories using Router - navigateByUrl</button>
+    <button (click)="onCategoriesClick2()">Go To Categories using Router - navigate</button>
 </div>
