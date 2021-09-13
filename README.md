@@ -1066,3 +1066,30 @@ In this app it will cover most topic in one app. I am creating branch for each t
     load
 
      Option 2 - using subscribe method to route
+
+
+21 - Setting up The Child or Nested routes using children key
+
+    app-module.ts
+            const appRoutes: Routes = [
+                { path: '', component: HomeComponent },
+                {
+                    path: 'users',
+                    component: UsersComponent,
+                    <!-- added child route user into users -->
+                    children: [{ path: ':id/:name', component: UserComponent }],
+                },
+                { path: 'categories', component: CategoriesComponent },
+                ];
+
+    users.component.html
+        <!-- click on the anchor tag. You will be in users component, but on click on individual user component would load and display at router-outlet -->
+        <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" [routerLink]="['/users',1,'Badal']">Get Badal Details</a></li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="['/users',1,'Dhaval']">Get Dhaval Details</a></li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="['/users',1,'Sheetal']">Get Sheetal Details</a></li>
+        </ul>
+
+        <div>
+            <router-outlet></router-outlet>
+        </div>
