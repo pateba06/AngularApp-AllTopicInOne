@@ -1,6 +1,6 @@
 # AngularApp-AllTopicInOne
 
-** Note
+** Note --- This repo I created for educational purpose
 
 main - This branch has upto 3 topics
 
