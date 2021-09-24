@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { UserComponent } from './user/user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 // definining array of Routes
 // const appRoutes:Routes= [
@@ -24,7 +25,10 @@ const appRoutes: Routes = [
     children: [
       { 
         // we removed users as we are already mentioning above as parent
-        path: ':id/:name', component: UserComponent }],
+        path: ':id/:name', component: UserComponent },
+        { 
+          // 22- for taking param to other component example
+          path: ':id/:edit', component: EditUserComponent }],
   },
   // dynamic route using id and prams
   { path: 'categories', component: CategoriesComponent },
@@ -36,6 +40,7 @@ const appRoutes: Routes = [
     UsersComponent,
     CategoriesComponent,
     UserComponent,
+    EditUserComponent,
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
   providers: [],
