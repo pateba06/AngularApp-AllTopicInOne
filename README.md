@@ -1163,3 +1163,15 @@ In this app it will cover most topic in one app. I am creating branch for each t
         <div>
             <router-outlet></router-outlet>
         </div>
+
+
+23 - Wild Card Route
+
+        <!--
+         We have to make sure wild routes are mention after all routes are defined
+         We can redirect user which ever page we want in below case we are letting user
+         to go to not-found page or component if mispelled or wrong url
+         -->
+        { path: 'not-found', component: PageNotFoundComponent },
+          // wild card it can only come at bottom. Once all above path are checked then it will come
+          { path: '**', redirectTo: 'not-found' },
