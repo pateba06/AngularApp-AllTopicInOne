@@ -8,6 +8,7 @@ import { UsersComponent } from './users/users.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { UserComponent } from './user/user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 // definining array of Routes
 // const appRoutes:Routes= [
@@ -23,16 +24,24 @@ const appRoutes: Routes = [
     path: 'users',
     component: UsersComponent,
     children: [
-      { 
-        // we removed users as we are already mentioning above as parent
-        path: ':id/:name', component: UserComponent },
-        { 
-          // 22- for taking param to other component example
-          path: ':id/:edit', component: EditUserComponent }],
-  },
-  // dynamic route using id and prams
-  { path: 'categories', component: CategoriesComponent },
-];
+            {
+              // we removed users as we are already mentioning above as parent
+              path: ':id/:name',
+              component: UserComponent,
+            },
+            {
+              // 22- for taking param to other component example
+              path: ':id/:edit',
+              component: EditUserComponent,
+            },
+          ],
+        },
+          // dynamic route using id and prams
+          { path: 'categories', component: CategoriesComponent },
+          { path: 'not-found', component: PageNotFoundComponent },
+          // wild card it can only come at bottom. Once all above path are checked then it will come
+          { path: '**', redirectTo: 'not-found' },
+      ];
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +50,7 @@ const appRoutes: Routes = [
     CategoriesComponent,
     UserComponent,
     EditUserComponent,
+    PageNotFoundComponent,
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
   providers: [],
