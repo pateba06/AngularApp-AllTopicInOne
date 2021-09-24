@@ -51,4 +51,12 @@ export class UserComponent implements OnInit {
       queryParams: { page: 3, search: 'Dhaval' },
     });
   }
+
+  // 22 --on click take param to edit page
+  onClickTakeParamToOtherPage(){
+    this.router.navigate(['/users',this.user.id,'edit'],{
+      // it will take two parameters merge and preserved
+      queryParamsHandling:'merge'
+    })
+  }
 }

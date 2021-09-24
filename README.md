@@ -1093,3 +1093,73 @@ In this app it will cover most topic in one app. I am creating branch for each t
         <div>
             <router-outlet></router-outlet>
         </div>
+
+
+22 - preserveOrMergeTheQueryParametersByForwardingWithQueryParamsHandling 
+
+    if you are navigating from one page to another page using query params. and if you want to take that query param in another
+    component.
+
+    app.module.ts
+        const appRoutes: Routes = [
+                { path: '', component: HomeComponent },
+                {
+                    path: 'users',
+                    component: UsersComponent,
+                    children: [
+                    { 
+                        // we removed users as we are already mentioning above as parent
+                        path: ':id/:name', component: UserComponent },
+                        { 
+                        // 22- for taking param to other component example
+                        path: ':id/:edit', component: EditUserComponent }],
+                },
+                // dynamic route using id and prams
+                { path: 'categories', component: CategoriesComponent },
+                ];
+
+    user.html
+
+            <!-- now we have edit button --on click will take that param to other component -->
+        <div class ="mt-3">
+            <button (click)="onClickTakeParamToOtherPage()">Edit Param</button>
+        </div> 
+
+    user.ts
+    
+            // 22 --on click take param to edit page
+            onClickTakeParamToOtherPage(){
+                this.router.navigate(['/users',this.user.id,'edit'],{
+                // it will take two parameters merge and preserved
+                queryParamsHandling:'merge'
+                })
+            }
+
+    users.component.html
+        <!-- added query param -->
+                <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" 
+                    [routerLink]="['/users',1,'Badal']"
+                    [queryParams]="{page:1 ,search: 'Badal'}">
+                    Get Badal Details
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" 
+                    [routerLink]="['/users',2,'Dhaval']"
+                    [queryParams]="{page:2 ,search: 'Dhaval'}">
+                    Get Dhaval Details
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" 
+                    [routerLink]="['/users',3,'Sheetal']"
+                    [queryParams]="{page:3 , search: 'Sheetal'}">
+                    Get Sheetal Details
+                </a>
+            </li>
+        </ul>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
